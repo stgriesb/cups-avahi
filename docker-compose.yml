@@ -1,8 +1,8 @@
 version: '3'
 services:
   cups:
-    image: cups
-    container_name: cups
+    image: cups-avahi
+    container_name: cups-avahi
     network_mode: host
     restart: always
     ports:

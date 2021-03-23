@@ -1,0 +1,19 @@
+# cups.tar.gz unter portainer importieren
+# sudo docker-compose -f /volume1/docker/cups/docker-compose.yml up -d
+
+version: '3'
+services:
+  cups:
+    image: cups
+    container_name: cups
+    network_mode: host
+    restart: always
+    ports:
+      - '631:631/tcp'
+    volumes:
+      - '/volume1/docker/cups/cfg/spool:/var/spool:rw'
+      - '/volume1/docker/cups/cfg:/etc/cups:rw'
+      - '/etc/localtime:/etc/localtime:ro'
+    environment:
+      CUPS_ADMIN_USERNAME: 'admin'
+      CUPS_ADMIN_PASSWORD: 'j0x8rT4%sG'

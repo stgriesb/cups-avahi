@@ -8,8 +8,8 @@ services:
     ports:
       - '631:631/tcp'
     volumes:
-      - '/docker/cups/cfg/spool:/var/spool:rw'
-      - '/docker/cups/cfg:/etc/cups:rw'
+      - '/docker/cups/cfg/spool:/var/spool'
+      - '/docker/cups/cfg:/etc/cups'
       - '/etc/localtime:/etc/localtime:ro'
     environment:
       CUPS_ADMIN_USERNAME: 'USERNAME'

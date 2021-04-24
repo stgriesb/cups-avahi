@@ -1,16 +1,18 @@
 version: '3'
 services:
   cups:
-    image: cups-avahi
-    container_name: cups-avahi
+    image: stgriesb/cups
+    container_name: cups
     network_mode: host
-    restart: always
+    restart: unless-stopped
     ports:
       - '631:631/tcp'
     volumes:
-      - '/docker/cups/cfg/spool:/var/spool'
-      - '/docker/cups/cfg:/etc/cups'
+      - '${VOLUME}/var-spool:/var/spool'
+      - '${VOLUME}/var-log:/var/log/cups'
+      - '${VOLUME}/var-cache:/var/cache/cups'
+      - '${VOLUME}/etc-cups:/etc/cups'
       - '/etc/localtime:/etc/localtime:ro'
     environment:
-      CUPS_ADMIN_USERNAME: 'USERNAME'
-      CUPS_ADMIN_PASSWORD: 'PASSWORD'
+      CUPS_ADMIN_USERNAME: ${CUPS_ADMIN_USERNAME}
+      CUPS_ADMIN_PASSWORD: ${CUPS_ADMIN_PASSWORD}

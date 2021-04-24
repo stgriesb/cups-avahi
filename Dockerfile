@@ -1,7 +1,3 @@
-# docker build -t cups .
-# docker save cups:latest | gzip > cups.tar.gz
-# mv cups.tar.gz /mnt/Downloads
-
 FROM ubuntu:latest
 
 RUN apt-get update -qq && \
